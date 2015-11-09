@@ -1,0 +1,1 @@
+Simple GO app using the Gin framework as http router and an angular front end

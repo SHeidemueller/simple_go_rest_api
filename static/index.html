@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="dogpark">
+<head>
+	<meta charset="UTF-8">
+	<title>The Dogpark</title>
+	<link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+<body >
+	<div class="jumbotron">
+		<button class="btn btn-primary pull-right" ng-click="add()">
+			<i class="fa fa-plus"></i> Let new dog enter the Park
+		</button>
+		<h1>Dogpark</h1>
+	</div>
+	<div class="container-fluid" ng-controller="MainCtl as main">
+		<div class="row">
+			<div class="col-sm-3 well">
+				<h3>Dogs</h3>
+				<ul class="nav nav-pills nav-stacked">
+					<li ng-class="{active: dog.name == selected.name}" ng-repeat="dog in main.dogs">
+						<a href="" ng-click="get($index)">{{dog.name}}</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-5" ng-show="selected">
+				<h2>{{selected.name}}</h2>
+				<dl class="dl-horizontal">
+					<dt>Owner:</dt>
+					<dd>{{selected.owner}}</dd>
+				</dl>
+			</div>
+			<div class="col-sm-4" ng-show="selected">
+				<button class="btn btn-primary form-control" ng-click="update(selected.idx)">
+					<i class="fa fa-pencil"></i> Update this dog 
+				</button>
+				<button class="btn btn-danger form-control" ng-click="remove(selected.idx)">
+					<i class="fa fa-trash-o"></i> Send dog home
+				</button>
+			</div>
+		</div>
+	</div>
+<script src="angular.js"></script>
+<script src="dogpark.js"></script>
+</body>
+</html>
