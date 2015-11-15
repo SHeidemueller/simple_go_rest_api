@@ -37,7 +37,7 @@ func main() {
 	if err != nil {
 		port = DEFAULT_PORT
 		host = DEFAULT_HOST
-		uri = "mongodb://bluemix:bluemix@candidate.21.mongolayer.com:11022/dogpark"
+		uri = "[MONGOURI]"
 		log.Print("local")
 		log.Print(uri)
 	} else {
