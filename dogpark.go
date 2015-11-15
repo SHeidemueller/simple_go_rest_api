@@ -89,7 +89,7 @@ func main() {
 	router.GET("/dogs", gettingAll)
 	router.GET("/dogs/:id", gettingOne)
 	router.POST("/dogs", posting)
-	router.PUT("/dogs/:id", putting)
+	router.POST("/dogs/:id", update)
 	router.DELETE("/dogs/:id", deleting)
 	router.GET("/", func(c *gin.Context) {
 		c.Redirect(308, "/static")
@@ -174,7 +174,7 @@ func deleting(c *gin.Context) {
 
 }
 
-func putting(c *gin.Context) {
+func update(c *gin.Context) {
 
 	var input Dog
 	c.Bind(&input)
