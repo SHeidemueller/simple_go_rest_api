@@ -40,76 +40,9 @@
 			</div>
 		</div>
 	</div>
-<script src="angular.js"></script>
-<script src="http://code.angularjs.org/1.2.10/angular-resource.min.js"></script>
-<script>
-	var dogpark = new angular.module("dogpark", ["ngResource"]);
+<script src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+<script src="dogpark.js"></script>
+<script src="https://code.angularjs.org/1.4.7/angular-resource.min.js"></script>
 
-	dogpark.controller("MainCtl", ["$scope", "$resource",
-		function($scope, $resource) {
-			var Dog = $resource("/dogs/:id", {
-				id: "@id"
-			}, {});
-	
-			$scope.selected = null;
-			$scope.dogs = Dog.query();
-	
-	
-			$scope.get = function(dog) {
-				Dog.get({
-					id: dog.id
-				}, function(data) {
-					$scope.selected = data;
-				})
-			};
-	
-			$scope.remove = function(dog) {
-				$scope.selected.$delete(function() {
-					$scope.dogs = Dog.query();
-				});
-	
-			};
-	
-			$scope.add = function() {
-				var name = prompt("Enter dog name.")
-				if (name == null) {
-					return;
-				}
-				var owner = prompt("Enter dog owner.")
-				if (owner == null) {
-					return;
-				}
-	
-				var dog = new Dog();
-				dog.name = name;
-				dog.owner = owner;
-				dog.$save(function() {
-					$scope.dogs = Dog.query();
-				})
-			}
-	
-			$scope.update = function(dog) {
-	
-				var name = prompt("Enter dog name.", dog.name)
-				if (name == null) {
-					return;
-				}
-				var owner = prompt("Enter dog owner.", dog.owner)
-				if (owner == null) {
-					return;
-				}
-				
-				dog.name = name;
-				dog.owner = owner;
-				
-				dog.$save(function() {
-					$scope.dogs = Dog.query();
-				})
-	
-			}
-	
-		}
-	]);
-</script>
 </body>
 </html>
